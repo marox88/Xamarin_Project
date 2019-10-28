@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace CommonPlatform
@@ -77,7 +78,7 @@ namespace CommonPlatform
 
         void OpenMapButton_Clicked (object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new CustomPages.MapPage());
         }
 
         async void DisplayActionSheetButton_Clicked (object sender, EventArgs e)
@@ -124,7 +125,7 @@ namespace CommonPlatform
 
         void OpenUriButton_Clicked(object sender, EventArgs e)
         {
-            Device.OpenUri(new Uri("http://xamarin.com/evolve"));
+            Launcher.OpenAsync(new Uri("http://xamarin.com/evolve"));
         }
     }
 }
