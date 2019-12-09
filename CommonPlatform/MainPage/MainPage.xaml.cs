@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -25,6 +26,8 @@ namespace CommonPlatform
 
         public MainPage()
         {
+            
+
             openUriButton = new Button
             {
                 Text = "Otwórz Xamarin Evolve"
@@ -74,6 +77,20 @@ namespace CommonPlatform
                 }
             };
             Content = stackLayout;
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await CallApi();
+
+        }
+
+        async Task CallApi()
+        {
+            var nsAPI = RestService.For<Interface.IMakeUpApi>("http://makeup-api.herokuapp.com");
+            var sugars = await nsAPI.GetMakeUps();
+          
         }
 
         void OpenMapButton_Clicked (object sender, EventArgs e)

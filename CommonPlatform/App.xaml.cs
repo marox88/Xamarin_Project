@@ -10,7 +10,7 @@ namespace CommonPlatform
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new CustomPages.ProvidersAuthPage();
         }
 
         protected override void OnStart()
